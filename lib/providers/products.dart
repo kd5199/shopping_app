@@ -40,10 +40,14 @@ class Products with ChangeNotifier {
 
   bool showFavoritesOnly = false;
 
+  List<Product> get favitems {
+    return _items.where((element) => element.isFavorite == true).toList();
+  }
+
   List<Product> get items {
-    if (showFavoritesOnly) {
+    /* if (showFavoritesOnly) {
       return _items.where((element) => element.isFavorite).toList();
-    }
+    } */
     return [..._items];
   }
 
@@ -56,11 +60,13 @@ class Products with ChangeNotifier {
     notifyListeners();
   }
 
-  void showFavoritesOnlyF() {
+  /* void showFavoritesOnlyF() {
     showFavoritesOnly = true;
+    notifyListeners();
   }
 
   void showAll() {
     showFavoritesOnly = false;
-  }
+    notifyListeners();
+  } */
 }
